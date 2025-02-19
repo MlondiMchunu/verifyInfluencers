@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 export default function InfluencerPageComponent() {
     const location = useLocation();
     const [influencer, setInfluencer] = useState(null);
+    const [activeTab,setActiveTab] = useState(["Claims"])
 
     useEffect(() => {
         if (location.state?.influencer) {
