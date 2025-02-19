@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 export default function InfluencerPageComponent() {
     const location = useLocation();
     const [influencer, setInfluencer] = useState(null);
-    const [activeTab,setActiveTab] = useState(["Claims"])
+    const [activeTab, setActiveTab] = useState("claims"); // State to manage active tab
 
     useEffect(() => {
         if (location.state?.influencer) {
@@ -62,7 +62,7 @@ export default function InfluencerPageComponent() {
                         )}
                     </div>
                     {/* Profile Description */}
-                    <p className="mt-1 text-gray-300 text-xs tracking-wide">
+                    <p className="mt-1 text-gray-300 text-xs">
                         {influencer.description || "No profile description available."}
                     </p>
                 </div>
@@ -98,6 +98,74 @@ export default function InfluencerPageComponent() {
                     <p className="text-xs font-bold text-white">Followers</p>
                     <p className="text-lg font-bold text-[#14b983]">{influencer.followers || 0}</p>
                     <p className="text-xs text-gray-400 mt-2">Total following</p>
+                </div>
+            </div>
+
+            {/* Tabs Section */}
+            <div className="mt-6 bg-[#182130] rounded-lg p-4">
+                {/* Tab Buttons */}
+                <div className="flex gap-4 border-b border-gray-700 pb-2">
+                    <button
+                        onClick={() => setActiveTab("claims")}
+                        className={`px-4 py-2 text-sm font-medium ${
+                            activeTab === "claims"
+                                ? "text-[#14b983] border-b-2 border-[#14b983]"
+                                : "text-gray-400 hover:text-white"
+                        }`}
+                    >
+                        Claims Analysis
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("products")}
+                        className={`px-4 py-2 text-sm font-medium ${
+                            activeTab === "products"
+                                ? "text-[#14b983] border-b-2 border-[#14b983]"
+                                : "text-gray-400 hover:text-white"
+                        }`}
+                    >
+                        Recommended Products
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("monetization")}
+                        className={`px-4 py-2 text-sm font-medium ${
+                            activeTab === "monetization"
+                                ? "text-[#14b983] border-b-2 border-[#14b983]"
+                                : "text-gray-400 hover:text-white"
+                        }`}
+                    >
+                        Monetization
+                    </button>
+                </div>
+
+                {/* Tab Content */}
+                <div className="mt-4">
+                    {activeTab === "claims" && (
+                        <div>
+                            <h3 className="text-lg font-bold">Claims Analysis</h3>
+                            <p className="text-gray-300 text-sm">
+                                Detailed analysis of health claims made by {influencer.name}.
+                            </p>
+                            {/* Add claims analysis content here */}
+                        </div>
+                    )}
+                    {activeTab === "products" && (
+                        <div>
+                            <h3 className="text-lg font-bold">Recommended Products</h3>
+                            <p className="text-gray-300 text-sm">
+                                Products recommended or endorsed by {influencer.name}.
+                            </p>
+                            {/* Add recommended products content here */}
+                        </div>
+                    )}
+                    {activeTab === "monetization" && (
+                        <div>
+                            <h3 className="text-lg font-bold">Monetization</h3>
+                            <p className="text-gray-300 text-sm">
+                                Insights into {influencer.name}'s revenue streams and monetization strategies.
+                            </p>
+                            {/* Add monetization content here */}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
