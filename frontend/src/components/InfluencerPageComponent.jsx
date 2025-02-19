@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import {Search} from "lucide-react";
 
 export default function InfluencerPageComponent() {
     const location = useLocation();
@@ -146,7 +147,7 @@ export default function InfluencerPageComponent() {
                                     <input
                                         type="text"
                                         placeholder="Search claims..."
-                                        className="w-full p-2 bg-[#101727] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#14b983]"
+                                        className="w-full h-7 p-2 bg-[#101727] border border-gray-700 rounded-lg text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#14b983]"
                                         value={searchClaimsQuery}
                                         onChange={(e) => setSearchClaimsQuery(e.target.value)}
                                     />
