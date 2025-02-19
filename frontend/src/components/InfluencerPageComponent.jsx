@@ -61,7 +61,7 @@ export default function InfluencerPageComponent() {
                         )}
                     </div>
                     {/* Profile Description */}
-                    <p className="mt-1 text-gray-300 text-xs">
+                    <p className="mt-1 text-gray-300 text-xs tracking-wide">
                         {influencer.description || "No profile description available."}
                     </p>
                 </div>
