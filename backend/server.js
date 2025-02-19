@@ -6,7 +6,7 @@ require('dotenv').config()
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin:["https://"],
+  origin:["https://verify-influencers-1.vercel.app/"],
   methods:["POST","GET"],
   credentials:true
 }));
