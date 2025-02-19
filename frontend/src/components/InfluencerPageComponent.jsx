@@ -5,7 +5,7 @@ export default function InfluencerPageComponent() {
     const location = useLocation();
     const [influencer, setInfluencer] = useState(null);
     const [activeTab, setActiveTab] = useState("claims"); // State to manage active tab
-
+    const [searchQuery, setSearchQuery] = useState("");
     useEffect(() => {
         if (location.state?.influencer) {
             setInfluencer(location.state.influencer);
@@ -107,31 +107,28 @@ export default function InfluencerPageComponent() {
                 <div className="flex gap-4 border-b border-gray-700 pb-2">
                     <button
                         onClick={() => setActiveTab("claims")}
-                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${
-                            activeTab === "claims"
+                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "claims"
                                 ? "text-[#14b983] border-b-2 border-[#14b983]"
                                 : "text-gray-400 hover:text-white"
-                        }`}
+                            }`}
                     >
                         Claims Analysis
                     </button>
                     <button
                         onClick={() => setActiveTab("products")}
-                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${
-                            activeTab === "products"
+                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "products"
                                 ? "text-[#14b983] border-b-2 border-[#14b983]"
                                 : "text-gray-400 hover:text-white"
-                        }`}
+                            }`}
                     >
                         Recommended Products
                     </button>
                     <button
                         onClick={() => setActiveTab("monetization")}
-                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${
-                            activeTab === "monetization"
+                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "monetization"
                                 ? "text-[#14b983] border-b-2 border-[#14b983]"
                                 : "text-gray-400 hover:text-white"
-                        }`}
+                            }`}
                     >
                         Monetization
                     </button>
