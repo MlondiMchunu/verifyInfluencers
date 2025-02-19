@@ -140,6 +140,39 @@ export default function InfluencerPageComponent() {
                     {activeTab === "claims" && (
                         <>
 
+                            <div>
+                                {/* Search Input for Claims */}
+                                <div className="mb-4">
+                                    <input
+                                        type="text"
+                                        placeholder="Search claims..."
+                                        className="w-full p-2 bg-[#101727] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#14b983]"
+                                        value={searchClaimsQuery}
+                                        onChange={(e) => setSearchClaimsQuery(e.target.value)}
+                                    />
+                                </div>
+
+                                <h3 className="text-lg font-bold">Claims Analysis</h3>
+                                <p className="text-gray-300 text-sm">
+                                    Detailed analysis of health claims made by {influencer.name}.
+                                </p>
+
+                                {/* Filtered Claims List */}
+                                <div className="mt-4">
+                                    {influencer.claims
+                                        ?.filter((claim) =>
+                                            claim.text.toLowerCase().includes(searchClaimsQuery.toLowerCase())
+                                        )
+                                        .map((claim, index) => (
+                                            <div key={index} className="p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
+                                                <p className="text-white text-sm">{claim.text}</p>
+                                                <p className="text-gray-400 text-xs mt-1">
+                                                    Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No"}
+                                                </p>
+                                            </div>
+                                        ))}
+                                </div>
+                            </div>
 
                             <div>
                                 <h3 className="text-lg font-bold">Claims Analysis</h3>
