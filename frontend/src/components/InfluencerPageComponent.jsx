@@ -174,13 +174,6 @@ export default function InfluencerPageComponent() {
                                 </div>
                             </div>
 
-                            <div>
-                                <h3 className="text-lg font-bold">Claims Analysis</h3>
-                                <p className="text-gray-300 text-sm">
-                                    Detailed analysis of health claims made by {influencer.name}.
-                                </p>
-                                {/* Add claims analysis content here */}
-                            </div>
                         </>
                     )}
                     {activeTab === "products" && (
