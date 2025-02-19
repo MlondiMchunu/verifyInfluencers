@@ -5,7 +5,7 @@ export default function InfluencerPageComponent() {
     const location = useLocation();
     const [influencer, setInfluencer] = useState(null);
     const [activeTab, setActiveTab] = useState("claims"); // State to manage active tab
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchClaimsQuery, setSearchClaimsQuery] = useState("");
     useEffect(() => {
         if (location.state?.influencer) {
             setInfluencer(location.state.influencer);
