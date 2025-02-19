@@ -107,7 +107,7 @@ export default function InfluencerPageComponent() {
                 <div className="flex gap-4 border-b border-gray-700 pb-2">
                     <button
                         onClick={() => setActiveTab("claims")}
-                        className={`px-4 py-2 text-sm font-medium ${
+                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${
                             activeTab === "claims"
                                 ? "text-[#14b983] border-b-2 border-[#14b983]"
                                 : "text-gray-400 hover:text-white"
@@ -117,7 +117,7 @@ export default function InfluencerPageComponent() {
                     </button>
                     <button
                         onClick={() => setActiveTab("products")}
-                        className={`px-4 py-2 text-sm font-medium ${
+                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${
                             activeTab === "products"
                                 ? "text-[#14b983] border-b-2 border-[#14b983]"
                                 : "text-gray-400 hover:text-white"
@@ -127,7 +127,7 @@ export default function InfluencerPageComponent() {
                     </button>
                     <button
                         onClick={() => setActiveTab("monetization")}
-                        className={`px-4 py-2 text-sm font-medium ${
+                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${
                             activeTab === "monetization"
                                 ? "text-[#14b983] border-b-2 border-[#14b983]"
                                 : "text-gray-400 hover:text-white"
