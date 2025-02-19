@@ -5,7 +5,11 @@ require('dotenv').config()
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:["https://"],
+  methods:["POST","GET"],
+  credentials:true
+}));
 
 const apiKey = process.env.OPENAI_API_KEY;
 const apiUrl = "https://api.openai.com/v1/chat/completions";
