@@ -6,6 +6,7 @@ export default function InfluencerPageComponent() {
     const [influencer, setInfluencer] = useState(null);
     const [activeTab, setActiveTab] = useState("claims"); // State to manage active tab
     const [searchClaimsQuery, setSearchClaimsQuery] = useState("");
+
     useEffect(() => {
         if (location.state?.influencer) {
             setInfluencer(location.state.influencer);
@@ -108,8 +109,8 @@ export default function InfluencerPageComponent() {
                     <button
                         onClick={() => setActiveTab("claims")}
                         className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "claims"
-                                ? "text-[#14b983] border-b-2 border-[#14b983]"
-                                : "text-gray-400 hover:text-white"
+                            ? "text-[#14b983] border-b-2 border-[#14b983]"
+                            : "text-gray-400 hover:text-white"
                             }`}
                     >
                         Claims Analysis
@@ -117,8 +118,8 @@ export default function InfluencerPageComponent() {
                     <button
                         onClick={() => setActiveTab("products")}
                         className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "products"
-                                ? "text-[#14b983] border-b-2 border-[#14b983]"
-                                : "text-gray-400 hover:text-white"
+                            ? "text-[#14b983] border-b-2 border-[#14b983]"
+                            : "text-gray-400 hover:text-white"
                             }`}
                     >
                         Recommended Products
@@ -126,8 +127,8 @@ export default function InfluencerPageComponent() {
                     <button
                         onClick={() => setActiveTab("monetization")}
                         className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "monetization"
-                                ? "text-[#14b983] border-b-2 border-[#14b983]"
-                                : "text-gray-400 hover:text-white"
+                            ? "text-[#14b983] border-b-2 border-[#14b983]"
+                            : "text-gray-400 hover:text-white"
                             }`}
                     >
                         Monetization
@@ -137,13 +138,17 @@ export default function InfluencerPageComponent() {
                 {/* Tab Content */}
                 <div className="mt-4">
                     {activeTab === "claims" && (
-                        <div>
-                            <h3 className="text-lg font-bold">Claims Analysis</h3>
-                            <p className="text-gray-300 text-sm">
-                                Detailed analysis of health claims made by {influencer.name}.
-                            </p>
-                            {/* Add claims analysis content here */}
-                        </div>
+                        <>
+
+
+                            <div>
+                                <h3 className="text-lg font-bold">Claims Analysis</h3>
+                                <p className="text-gray-300 text-sm">
+                                    Detailed analysis of health claims made by {influencer.name}.
+                                </p>
+                                {/* Add claims analysis content here */}
+                            </div>
+                        </>
                     )}
                     {activeTab === "products" && (
                         <div>
