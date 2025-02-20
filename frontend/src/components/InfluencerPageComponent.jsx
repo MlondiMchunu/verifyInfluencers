@@ -33,7 +33,7 @@ export default function InfluencerPageComponent() {
         return <div className="text-white text-center">Loading influencer data...</div>;
     }
 
-    console.log("Claims: ", influencer.claims)
+    //console.log("Claims: ", influencer.claims)
 
     return (
         <div className="w-full text-white text-left max-w-[1200px] mx-auto bg-[#101727] p-6 rounded-lg shadow-md">
@@ -80,13 +80,13 @@ export default function InfluencerPageComponent() {
                 <div className="p-4 bg-[#182130] rounded-lg">
                     <p className="text-xs font-bold text-white text-left">Trust Score</p>
                     <p className="text-lg font-bold text-[#14b983] text-left">{influencer.trustScore || 0}%</p>
-                    <p className="text-xs text-gray-400 mt-2">Based on verified claims</p>
+                    <p className="text-xs text-gray-400 mt-2 text-left">Based on verified claims</p>
                 </div>
 
                 {/* Yearly Revenue */}
                 <div className="p-4 bg-[#182130] rounded-lg text-left">
                     <p className="text-xs font-bold text-white">Yearly Revenue</p>
-                    <p className="text-lg font-bold text-[#14b983]">
+                    <p className="text-lg font-bold text-[#14b983] text-left">
                         {new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(influencer.yearlyRevenue || 0)}
                     </p>
                     <p className="text-xs text-gray-400 mt-2">Estimated earnings</p>
@@ -234,7 +234,7 @@ export default function InfluencerPageComponent() {
                                 <p className="text-gray-400 text-xs mt-1">
                                     Category: {claim.category} | Verification: {claim.verification_status} | Date: {claim.date_of_the_claim}
                                 </p>
-                                <p className="text-gray-400 text-xs mt-1"><a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href={claim.link_to_the_claim_source}>View Research</a></p>
+                                <p className="text-gray-400 text-xs mt-1"><a target="_blank" className="!text-[#12b981] hover:text-blue-800 visited:text-purple-600 " href={claim.link_to_the_claim_source}>View Research</a></p>
                             </div>
                             <div >
                                 <p className="text-[#14b983] text-xs/3 font-bold">{claim.confidenceScore}%</p>
