@@ -257,6 +257,12 @@ export default function InfluencerPageComponent() {
                         <div
                             key={index}
                             className="flex justify-between items-center p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
+                                <div>
+                                    <p className="text-white text-sm">{claim.text}</p>
+                                    <p className="text-gray-400 text-xs mt-1">
+                                        Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No" }
+                                    </p>
+                                </div>
 
                         </div>
                     ))
