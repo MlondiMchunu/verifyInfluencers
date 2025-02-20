@@ -215,7 +215,7 @@ export default function InfluencerPageComponent() {
             </div>
             {/* Claims List Ordered by Trust Score */}
             <div className="mt-6 bg-[#101727] rounded-lg p-4">
-                <h3 className="text-xs/3 mb-3 opacity-70">Showing {influencer.claims.length} claims</h3>
+                <p className="text-xs/3 mb-3 opacity-70">Showing {influencer.claims.length} claims</p>
                 {influencer.claims?.filter((claim) => {
                     //filter by search query
                     const matchesSearch = claim.text.toLowerCase().includes(searchClaimsQuery.toLowerCase());
@@ -228,12 +228,13 @@ export default function InfluencerPageComponent() {
                     .map((claim, index) => (
                         <div
                             key={index}
-                            className="flex justify-between items-center p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
+                            className="flex justify-between items-center p-4 mb-2 bg-[#101727] rounded-lg ">
                             <div>
                                 <p className="text-white text-xs/5 font-bold">{claim.text}</p>
                                 <p className="text-gray-400 text-xs mt-1">
-                                    Category: {claim.category} | Verification: {claim.verification_status}
+                                    Category: {claim.category} | Verification: {claim.verification_status} | Date: {claim.date_of_the_claim}
                                 </p>
+                                <p className="text-gray-400 text-xs mt-1"><a href={claim.link_to_the_claim_source}>View Research</a></p>
                             </div>
                             <div >
                                 <p className="text-[#14b983] text-xs/3 font-bold">{claim.confidenceScore}%</p>
