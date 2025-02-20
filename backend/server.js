@@ -43,7 +43,7 @@ Analyze recent health-related content from "${influencerName}" within the "${tim
   "claims": [
     {
       "text": "Health claim text here",
-      "category": (Nutrition, Fitness, Medicine, Mental Health etc),
+      "category": (Nutrition, Fitness, Medicine, Mental Health, Sleep, Performance ,Hormones, Nutrition,Exercise, Stress, Cognition, Motivation, Recovery, etc),
       "verified": true,
       "source": (PubMed, Nature, Science, etc),
       "confidenceScore": (number)
