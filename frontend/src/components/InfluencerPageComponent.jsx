@@ -228,13 +228,20 @@ export default function InfluencerPageComponent() {
                             key={index}
                             className="flex justify-between items-center p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
                                 <div>
-                                    <p className="text-white text-sm">{claim.text}</p>
+                                    <p className="text-white text-xs/5 font-bold">{claim.text}</p>
                                     <p className="text-gray-400 text-xs mt-1">
-                                        Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No" }
+                                        Category: {claim.category} | Verification: {" "} {claim.verificationstatus === "Verified"
+                                                                                          ? "Verified"
+                                                                                          : claim.verificationstatus === "Questionable"
+                                                                                          ? "Questionable"
+                                                                                          : claim.verificationstatus === "Debunked"
+                                                                                          ? "Debunked"
+                                                                                          : "Unknown"}
                                     </p>
                                 </div>
-                                <div className="text-[#14b983] text-sm font-bold">
-                                    {claim.confidenceScore} % <p>Trust Score</p>
+                                <div >
+                                   <p className="text-[#14b983] text-xs/3 font-bold">{claim.confidenceScore}%</p>  
+                                   <p className="text-white text-xs/2 opacity-70 mt-2 font-bold">Trust Score</p>
                                 </div>
 
                         </div>
