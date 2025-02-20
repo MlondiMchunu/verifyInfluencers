@@ -7,6 +7,8 @@ export default function InfluencerPageComponent() {
     const [influencer, setInfluencer] = useState(null);
     const [activeTab, setActiveTab] = useState("claims"); // State to manage active tab
     const [searchClaimsQuery, setSearchClaimsQuery] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
+
 
     useEffect(() => {
         if (location.state?.influencer) {
@@ -154,13 +156,7 @@ export default function InfluencerPageComponent() {
                                 </div>
 
                                 <div className="mb-4">
-            <input
-                type="text"
-                placeholder="Search claims..."
-                className="w-full p-2 bg-[#101727] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#14b983]"
-                value={searchClaimsQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-            />
+           
         </div>
 
         {/* Category Buttons */}
@@ -181,10 +177,10 @@ export default function InfluencerPageComponent() {
                 <button
                     key={index}
                     onClick={() => setSelectedCategory(category === "All Categories" ? "" : category)}
-                    className={`px-4 py-2 text-sm font-medium whitespace-nowrap ${
+                    className={`px-2 py-1 mr-1 bg-[#101727] text-white opacity opacity-70 !rounded-full !text-xs/3 ${
                         selectedCategory === (category === "All Categories" ? "" : category)
-                            ? "bg-[#14b983] text-white"
-                            : "bg-[#182130] text-gray-400 hover:bg-[#14b983] hover:text-white"
+                            ? "!bg-[#14b983] text-white"
+                            : "!bg-[#101727] text-gray-400 hover:bg-[#14b983] hover:text-white"
                     } rounded-lg transition-colors duration-300`}
                 >
                     {category}
@@ -220,26 +216,7 @@ export default function InfluencerPageComponent() {
                 ))}
         </div>
 
-                                <h3 className="text-lg font-bold">Claims Analysis</h3>
-                                <p className="text-gray-300 text-sm">
-                                    Detailed analysis of health claims made by {influencer.name}.
-                                </p>
-
-                                {/* Filtered Claims List */}
-                                <div className="mt-4">
-                                    {influencer.claims
-                                        ?.filter((claim) =>
-                                            claim.text.toLowerCase().includes(searchClaimsQuery.toLowerCase())
-                                        )
-                                        .map((claim, index) => (
-                                            <div key={index} className="p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
-                                                <p className="text-white text-sm">{claim.text}</p>
-                                                <p className="text-gray-400 text-xs mt-1">
-                                                    Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No"}
-                                                </p>
-                                            </div>
-                                        ))}
-                                </div>
+                              
                             </div>
 
                         </>
