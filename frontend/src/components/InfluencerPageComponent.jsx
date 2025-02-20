@@ -212,8 +212,8 @@ export default function InfluencerPageComponent() {
                 </div>
             </div>
             {/* Claims List Ordered by Trust Score */}
-            <div className="mt-6 bg-[#182130] rounded-lg p-4">
-                <h3 className="text-lg font-bold mb-4">Showing {influencer.claims.length} claims</h3>
+            <div className="mt-6 bg-[#101727] rounded-lg p-4">
+                <h3 className="text-xs/3 mb-3 opacity-70">Showing {influencer.claims.length} claims</h3>
                 {influencer.claims?.filter((claim) => {
                     //filter by search query
                     const matchesSearch = claim.text.toLowerCase().includes(searchClaimsQuery.toLowerCase());
@@ -234,7 +234,7 @@ export default function InfluencerPageComponent() {
                                     </p>
                                 </div>
                                 <div className="text-[#14b983] text-sm font-bold">
-                                    {claim.confidenceScore} %
+                                    {claim.confidenceScore} % <p>Trust Score</p>
                                 </div>
 
                         </div>
