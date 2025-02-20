@@ -251,7 +251,15 @@ export default function InfluencerPageComponent() {
                     //Filtered by selected category
                     const matchesCategory = !selectedCategory || claim.category === selectedCategory;
                     return matchesSearch && matchesCategory;
-                }).sort((a,b)=>b.confidenceScore - a.confidenceScore)// sort by trust score(descending)
+                })
+                    .sort((a, b) => b.confidenceScore - a.confidenceScore)// sort by trust score(descending)\
+                    .map((claim, index) => (
+                        <div
+                            key={index}
+                            className="flex justify-between items-center p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
+
+                        </div>
+                    ))
                 }
             </div>
         </div>
