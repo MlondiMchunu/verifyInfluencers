@@ -234,7 +234,7 @@ export default function InfluencerPageComponent() {
                                 <p className="text-gray-400 text-xs mt-1">
                                     Category: {claim.category} | Verification: {claim.verification_status} | Date: {claim.date_of_the_claim}
                                 </p>
-                                <p className="text-gray-400 text-xs mt-1"><a href={claim.link_to_the_claim_source}>View Research</a></p>
+                                <p className="text-gray-400 text-xs mt-1"><a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href={claim.link_to_the_claim_source}>View Research</a></p>
                             </div>
                             <div >
                                 <p className="text-[#14b983] text-xs/3 font-bold">{claim.confidenceScore}%</p>
