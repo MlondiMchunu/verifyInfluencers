@@ -179,8 +179,8 @@ export default function InfluencerPageComponent() {
                                             key={index}
                                             onClick={() => setSelectedCategory(category === "All Categories" ? "" : category)}
                                             className={`px-2 py-1 mr-1 bg-[#101727] text-white opacity-70 !rounded-full !text-xs/3 ${selectedCategory === (category === "All Categories" ? "" : category)
-                                                    ? "!bg-[#14b983] text-white"
-                                                    : "!bg-[#101727] text-gray-400 hover:bg-[#14b983] hover:text-white"
+                                                ? "!bg-[#14b983] text-white"
+                                                : "!bg-[#101727] text-gray-400 hover:bg-[#14b983] hover:text-white"
                                                 } rounded-lg transition-colors duration-300`}
                                         >
                                             {category}
@@ -242,10 +242,13 @@ export default function InfluencerPageComponent() {
                 </div>
             </div>
             {/* Claims List Ordered by Trust Score */}
-<div className="mt-6 bg-[#182130] rounded-lg p-4">
-    <h3 className="text-lg font-bold mb-4">Claims Ordered by Trust Score</h3>
-    
-</div>
+            <div className="mt-6 bg-[#182130] rounded-lg p-4">
+                <h3 className="text-lg font-bold mb-4">Showing {influencer.claims}</h3>
+                {influencer.claims?.filter((claim)=>{
+                    //filter by search query
+                    const matchesSearch = claim.text.toLowerCase().includes(searchClaimsQuery.toLowerCase());
+                })}
+            </div>
         </div>
     );
 }
