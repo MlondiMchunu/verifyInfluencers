@@ -8,119 +8,120 @@ const apiUrl = import.meta.env.VITE_API_URL;
 const backendUrl = "http://localhost:4000"; // Replace with your backend URL
 
 export default function ResearchTasksComponent() {
-  const [isToggledRA, setIsToggledRA] = useState(false);
-  const [isToggledVSJ, setIsToggledVSJ] = useState(false);
-  const [selectSpecificInfluencer, setSelectSpecificInfluencer] = useState(false);
-  const [discoverNewInfluencers, setDiscoverNewInfluencers] = useState(false);
-  const [selectedJournals, setSelectedJournals] = useState([]);
-  const [selectedTimeRange, setSelectedTimeRange] = useState(null);
-  const [influencerName, setInfluencerName] = useState("");
-  const [claimsToAnalyze, setClaimsToAnalyze] = useState(0);
-  const [productsToFind, setProductsToFind] = useState(0);
-  const [influencers, setInfluencers] = useState([]);
+    const [isToggledRA, setIsToggledRA] = useState(false);
+    const [isToggledVSJ, setIsToggledVSJ] = useState(false);
+    const [selectSpecificInfluencer, setSelectSpecificInfluencer] = useState(false);
+    const [discoverNewInfluencers, setDiscoverNewInfluencers] = useState(false);
+    const [selectedJournals, setSelectedJournals] = useState([]);
+    const [selectedTimeRange, setSelectedTimeRange] = useState(null);
+    const [influencerName, setInfluencerName] = useState("");
+    const [claimsToAnalyze, setClaimsToAnalyze] = useState(0);
+    const [productsToFind, setProductsToFind] = useState(0);
+    const [influencers, setInfluencers] = useState([]);
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const journals = [
-    "PubMed Central",
-    "Nature",
-    "Science",
-    "Cell",
-    "The Lancet",
-    "New England Journal of Medicine",
-    "JAMA Network",
-  ];
+    const journals = [
+        "PubMed Central",
+        "Nature",
+        "Science",
+        "Cell",
+        "The Lancet",
+        "New England Journal of Medicine",
+        "JAMA Network",
+    ];
 
-  const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
+    const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
 
-  const handleJournalSelect = (journal) => {
-    if (selectedJournals.includes(journal)) {
-      setSelectedJournals(selectedJournals.filter((j) => j !== journal));
-    } else {
-      setSelectedJournals([...selectedJournals, journal]);
-    }
-  };
-
-  const handleStartResearch = async () => {
-    const researchData = {
-      influencerName,
-      timeRange: selectedTimeRange,
-      claimsToAnalyze,
-      productsToFind,
-      isToggledRA,
-      isToggledVSJ,
-      selectedJournals,
+    const handleJournalSelect = (journal) => {
+        if (selectedJournals.includes(journal)) {
+            setSelectedJournals(selectedJournals.filter((j) => j !== journal));
+        } else {
+            setSelectedJournals([...selectedJournals, journal]);
+        }
     };
 
-    try {
-      // Send the request to the backend
-      const response = await fetch(`${backendUrl}/api/research`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(researchData),
-      });
+    const handleStartResearch = async () => {
+        const researchData = {
+            influencerName,
+            timeRange: selectedTimeRange,
+            claimsToAnalyze,
+            productsToFind,
+            isToggledRA,
+            isToggledVSJ,
+            selectedJournals,
+        };
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch data from the backend");
-      }
+        try {
+            // Send the request to the backend
+            const response = await fetch(`${backendUrl}/api/research`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(researchData),
+            });
 
-      const data = await response.json();
-      console.log("Response from Backend:", data);
-
-      // Parse the AI response from the backend
-      const rawText = data.choices?.[0]?.message?.content;
-      if (!rawText) {
-        console.error("No content received from AI.");
-        return;
-      }
-
-      const cleanedText = rawText.replace(/```json|```/g, "").trim();
-      const influencersData = JSON.parse(cleanedText);
-
-      // Transform the data for the frontend
-      const transformedData = {
-        profilePicture: "src/assets/andrew.jpg",
-        name: influencersData.influencer?.name || "Influencer Name",
-        categories: extractUniqueCategories(influencersData), // Extract unique categories
-        description: influencersData.analysisSummary || "No description available.",
-        trustScore: influencersData.influencer?.trustScore || 0,
-        yearlyRevenue: influencersData.estimatedRevenue || 0,
-        products: influencersData.products?.length || 0,
-        followers: influencersData.influencer?.followers || 0,
-      };
-      
-      // Helper function to extract unique categories
-      function extractUniqueCategories(data) {
-        const categories = new Set();
-      
-        // Add category from the influencer property
-        if (data.influencer?.category) {
-          categories.add(data.influencer.category);
-        }
-      
-        // Add categories from the claims array
-        if (data.claims && Array.isArray(data.claims)) {
-          data.claims.forEach((claim) => {
-            if (claim.category) {
-              categories.add(claim.category);
+            if (!response.ok) {
+                throw new Error("Failed to fetch data from the backend");
             }
-          });
-        }
-      
-        // Convert the Set to an array
-        return Array.from(categories);
-      }
 
-      // Save the data to localStorage and navigate to the influencer page
-      localStorage.setItem("selectedInfluencer", JSON.stringify(transformedData));
-      navigate("/influencer-page", { state: { influencer: transformedData } });
-    } catch (error) {
-      console.error("Error fetching data from the backend:", error);
-      alert("An error occurred while fetching data. Please try again.");
-    }
-  };
+            const data = await response.json();
+            console.log("Response from Backend:", data);
+
+            // Parse the AI response from the backend
+            const rawText = data.choices?.[0]?.message?.content;
+            if (!rawText) {
+                console.error("No content received from AI.");
+                return;
+            }
+
+            const cleanedText = rawText.replace(/```json|```/g, "").trim();
+            const influencersData = JSON.parse(cleanedText);
+
+            // Transform the data for the frontend
+            const transformedData = {
+                profilePicture: "src/assets/andrew.jpg",
+                name: influencersData.influencer?.name || "Influencer Name",
+                categories: extractUniqueCategories(influencersData), // Extract unique categories
+                description: influencersData.analysisSummary || "No description available.",
+                trustScore: influencersData.influencer?.trustScore || 0,
+                yearlyRevenue: influencersData.estimatedRevenue || 0,
+                products: influencersData.products?.length || 0,
+                followers: influencersData.influencer?.followers || 0,
+                claims: influencersData.claims || "No available claims"
+            };
+
+            // Helper function to extract unique categories
+            function extractUniqueCategories(data) {
+                const categories = new Set();
+
+                // Add category from the influencer property
+                if (data.influencer?.category) {
+                    categories.add(data.influencer.category);
+                }
+
+                // Add categories from the claims array
+                if (data.claims && Array.isArray(data.claims)) {
+                    data.claims.forEach((claim) => {
+                        if (claim.category) {
+                            categories.add(claim.category);
+                        }
+                    });
+                }
+
+                // Convert the Set to an array
+                return Array.from(categories);
+            }
+
+            // Save the data to localStorage and navigate to the influencer page
+            localStorage.setItem("selectedInfluencer", JSON.stringify(transformedData));
+            navigate("/influencer-page", { state: { influencer: transformedData } });
+        } catch (error) {
+            console.error("Error fetching data from the backend:", error);
+            alert("An error occurred while fetching data. Please try again.");
+        }
+    };
 
 
     return (

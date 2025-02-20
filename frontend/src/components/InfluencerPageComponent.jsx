@@ -263,6 +263,9 @@ export default function InfluencerPageComponent() {
                                         Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No" }
                                     </p>
                                 </div>
+                                <div className="text-[#14b983] text-sm font-bold">
+                                    {claim.confidenceScore} %
+                                </div>
 
                         </div>
                     ))
