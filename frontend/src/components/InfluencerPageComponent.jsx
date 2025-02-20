@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Search } from "lucide-react";
+import { ExternalLink } from 'lucide-react';
+
 
 export default function InfluencerPageComponent() {
     const location = useLocation();
@@ -234,8 +236,16 @@ export default function InfluencerPageComponent() {
                                 <p className="text-gray-400 text-xs mt-1">
                                     Category: {claim.category} | Verification: {claim.verification_status} | Date: {claim.date_of_the_claim}
                                 </p>
-                                <p className="text-gray-400 text-xs mt-1"><a target="_blank" className="!text-[#12b981] hover:text-blue-800 visited:text-purple-600 " href={claim.link_to_the_claim_source}>View Research</a></p>
-                            </div>
+                                <p className="text-gray-400 text-xs mt-1 flex items-center">
+                                    <a
+                                        target="_blank"
+                                        className="!text-[#12b981] hover:text-blue-800 visited:text-purple-600"
+                                        href={claim.link_to_the_claim_source}
+                                    >
+                                        View Research
+                                    </a>
+                                    <ExternalLink size={12} className="ml-1 !text-[#12b981]" />
+                                </p>                            </div>
                             <div >
                                 <p className="text-[#14b983] text-xs/3 font-bold">{claim.confidenceScore}%</p>
                                 <p className="text-white text-xs/2 opacity-70 mt-2 font-bold">Trust Score</p>
