@@ -187,36 +187,6 @@ export default function InfluencerPageComponent() {
                                         </button>
                                     ))}
                                 </div>
-
-                                <h3 className="text-lg font-bold">Claims Analysis</h3>
-                                <p className="text-gray-300 text-sm">
-                                    Detailed analysis of health claims made by {influencer.name}.
-                                </p>
-
-                                {/* Filtered Claims List */}
-                                <div className="mt-4">
-                                    {influencer.claims
-                                        ?.filter((claim) => {
-                                            // Filter by search query
-                                            const matchesSearch = claim.text
-                                                .toLowerCase()
-                                                .includes(searchClaimsQuery.toLowerCase());
-                                            // Filter by selected category
-                                            const matchesCategory =
-                                                !selectedCategory || claim.category === selectedCategory;
-                                            return matchesSearch && matchesCategory;
-                                        })
-                                        .map((claim, index) => (
-                                            <div key={index} className="p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
-                                                <p className="text-white text-sm">{claim.text}</p>
-                                                <p className="text-gray-400 text-xs mt-1">
-                                                    Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No"}
-                                                </p>
-                                            </div>
-                                        ))}
-                                </div>
-
-
                             </div>
 
                         </>
@@ -243,7 +213,7 @@ export default function InfluencerPageComponent() {
             </div>
             {/* Claims List Ordered by Trust Score */}
             <div className="mt-6 bg-[#182130] rounded-lg p-4">
-                <h3 className="text-lg font-bold mb-4">Showing {influencer.claims}</h3>
+                <h3 className="text-lg font-bold mb-4">Showing {influencer.claims.length} claims</h3>
                 {influencer.claims?.filter((claim) => {
                     //filter by search query
                     const matchesSearch = claim.text.toLowerCase().includes(searchClaimsQuery.toLowerCase());
