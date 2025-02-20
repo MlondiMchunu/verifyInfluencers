@@ -48,7 +48,7 @@ Analyze recent health-related content from "${influencerName}" within the "${tim
       "source": (PubMed, Nature, Science, etc),
       "confidenceScore": (number),
       "date_of_the_claim": date (DD/MM/YYYY)
-      "link_to_the_claim_source":(url)
+      "link_to_the_claim_source":(url, *verify the link if it exist and status of page should not be Error 404) 
     }
   ],
   "products": [
