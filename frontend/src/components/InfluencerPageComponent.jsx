@@ -251,7 +251,8 @@ export default function InfluencerPageComponent() {
                     //Filtered by selected category
                     const matchesCategory = !selectedCategory || claim.category === selectedCategory;
                     return matchesSearch && matchesCategory;
-                })}
+                }).sort((a,b)=>b.confidenceScore - a.confidenceScore)// sort by trust score(descending)
+                }
             </div>
         </div>
     );
