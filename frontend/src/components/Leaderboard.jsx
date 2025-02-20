@@ -188,7 +188,7 @@ Do NOT include explanations, markdown, or formatting—return raw JSON only.`).t
             {["All", "Nutrition", "Fitness", "Medicine", "Mental Health"].map(category => (
               <button
                 key={category}
-                className={`px-4 py-2 rounded-full whitespace-nowrap transition-all duration-300 !bg-[#182130] opacity-80 ${activeFilter === category ? "bg-[#1db885] !bg-[#1db885] text-white" : "bg-[#182130] text-white"
+                className={`px-4 py-2 !rounded-full whitespace-nowrap transition-all duration-300 !bg-[#182130] opacity-80 ${activeFilter === category ? "bg-[#1db885] !bg-[#1db885] text-white" : "bg-[#182130] text-white"
                   }`}
                 onClick={() => setActiveFilter(category)}
               >
