@@ -33,6 +33,8 @@ export default function InfluencerPageComponent() {
         return <div className="text-white text-center">Loading influencer data...</div>;
     }
 
+    console.log("Claims: ", influencer.claims)
+
     return (
         <div className="w-full text-white text-left max-w-[1200px] mx-auto bg-[#101727] p-6 rounded-lg shadow-md">
             {/* Profile Section */}
@@ -227,22 +229,16 @@ export default function InfluencerPageComponent() {
                         <div
                             key={index}
                             className="flex justify-between items-center p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
-                                <div>
-                                    <p className="text-white text-xs/5 font-bold">{claim.text}</p>
-                                    <p className="text-gray-400 text-xs mt-1">
-                                        Category: {claim.category} | Verification: {" "} {claim.verificationstatus === "Verified"
-                                                                                          ? "Verified"
-                                                                                          : claim.verificationstatus === "Questionable"
-                                                                                          ? "Questionable"
-                                                                                          : claim.verificationstatus === "Debunked"
-                                                                                          ? "Debunked"
-                                                                                          : "Unknown"}
-                                    </p>
-                                </div>
-                                <div >
-                                   <p className="text-[#14b983] text-xs/3 font-bold">{claim.confidenceScore}%</p>  
-                                   <p className="text-white text-xs/2 opacity-70 mt-2 font-bold">Trust Score</p>
-                                </div>
+                            <div>
+                                <p className="text-white text-xs/5 font-bold">{claim.text}</p>
+                                <p className="text-gray-400 text-xs mt-1">
+                                    Category: {claim.category} | Verification: {claim.verification_status}
+                                </p>
+                            </div>
+                            <div >
+                                <p className="text-[#14b983] text-xs/3 font-bold">{claim.confidenceScore}%</p>
+                                <p className="text-white text-xs/2 opacity-70 mt-2 font-bold">Trust Score</p>
+                            </div>
 
                         </div>
                     ))
