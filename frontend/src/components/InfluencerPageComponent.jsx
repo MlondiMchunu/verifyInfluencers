@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import {Search} from "lucide-react";
+import { Search } from "lucide-react";
 
 export default function InfluencerPageComponent() {
     const location = useLocation();
@@ -106,12 +106,12 @@ export default function InfluencerPageComponent() {
             </div>
 
             {/* Tabs Section */}
-            <div className="mt-6 bg-[#182130] rounded-lg p-4">
+            <div className="mt-6 bg-[#182130] rounded-sm p-4">
                 {/* Tab Buttons */}
                 <div className="flex gap-4 border-b border-gray-700 pb-2">
                     <button
                         onClick={() => setActiveTab("claims")}
-                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "claims"
+                        className={`px-4 py-2 !text-xs/3 !bg-[#182130] ${activeTab === "claims"
                             ? "text-[#14b983] border-b-2 border-[#14b983]"
                             : "text-gray-400 hover:text-white"
                             }`}
@@ -120,7 +120,7 @@ export default function InfluencerPageComponent() {
                     </button>
                     <button
                         onClick={() => setActiveTab("products")}
-                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "products"
+                        className={`px-4 py-2 !text-xs/3 !bg-[#182130] ${activeTab === "products"
                             ? "text-[#14b983] border-b-2 border-[#14b983]"
                             : "text-gray-400 hover:text-white"
                             }`}
@@ -129,9 +129,9 @@ export default function InfluencerPageComponent() {
                     </button>
                     <button
                         onClick={() => setActiveTab("monetization")}
-                        className={`px-4 py-2 text-xs font-medium !bg-[#182130] ${activeTab === "monetization"
-                            ? "text-[#14b983] border-b-2 border-[#14b983]"
-                            : "text-gray-400 hover:text-white"
+                        className={`px-4 py-2 !text-xs/3 !bg-[#182130] ${activeTab === "monetization"
+                            ? "text-[#14b983] "
+                            : "text-gray-400 "
                             }`}
                     >
                         Monetization
@@ -156,74 +156,74 @@ export default function InfluencerPageComponent() {
                                 </div>
 
                                 <div className="mb-4">
-           
-        </div>
 
-        {/* Category Buttons */}
-        <div className="flex overflow-x-auto gap-2 mb-4">
-            {[
-                "All Categories",
-                "Sleep",
-                "Performance",
-                "Hormones",
-                "Nutrition",
-                "Exercise",
-                "Stress",
-                "Cognition",
-                "Motivation",
-                "Recovery",
-                "Mental Health",
-            ].map((category, index) => (
-                <button
-                    key={index}
-                    onClick={() => setSelectedCategory(category === "All Categories" ? "" : category)}
-                    className={`px-2 py-1 mr-1 bg-[#101727] text-white opacity opacity-70 !rounded-full !text-xs/3 ${
-                        selectedCategory === (category === "All Categories" ? "" : category)
-                            ? "!bg-[#14b983] text-white"
-                            : "!bg-[#101727] text-gray-400 hover:bg-[#14b983] hover:text-white"
-                    } rounded-lg transition-colors duration-300`}
-                >
-                    {category}
-                </button>
-            ))}
-        </div>
+                                </div>
+                                <div><p className="text-xs/3 mb-3 opacity-70">Categories</p></div>
 
-        <h3 className="text-lg font-bold">Claims Analysis</h3>
-        <p className="text-gray-300 text-sm">
-            Detailed analysis of health claims made by {influencer.name}.
-        </p>
+                                {/* Category Buttons */}
+                                <div className="flex overflow-x-auto gap-2 mb-4">
+                                    {[
+                                        "All Categories",
+                                        "Sleep",
+                                        "Performance",
+                                        "Hormones",
+                                        "Nutrition",
+                                        "Exercise",
+                                        "Stress",
+                                        "Cognition",
+                                        "Motivation",
+                                        "Recovery",
+                                        "Mental Health",
+                                    ].map((category, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setSelectedCategory(category === "All Categories" ? "" : category)}
+                                            className={`px-2 py-1 mr-1 bg-[#101727] text-white opacity-70 !rounded-full !text-xs/3 ${selectedCategory === (category === "All Categories" ? "" : category)
+                                                    ? "!bg-[#14b983] text-white"
+                                                    : "!bg-[#101727] text-gray-400 hover:bg-[#14b983] hover:text-white"
+                                                } rounded-lg transition-colors duration-300`}
+                                        >
+                                            {category}
+                                        </button>
+                                    ))}
+                                </div>
 
-        {/* Filtered Claims List */}
-        <div className="mt-4">
-            {influencer.claims
-                ?.filter((claim) => {
-                    // Filter by search query
-                    const matchesSearch = claim.text
-                        .toLowerCase()
-                        .includes(searchClaimsQuery.toLowerCase());
-                    // Filter by selected category
-                    const matchesCategory =
-                        !selectedCategory || claim.category === selectedCategory;
-                    return matchesSearch && matchesCategory;
-                })
-                .map((claim, index) => (
-                    <div key={index} className="p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
-                        <p className="text-white text-sm">{claim.text}</p>
-                        <p className="text-gray-400 text-xs mt-1">
-                            Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No"}
-                        </p>
-                    </div>
-                ))}
-        </div>
+                                <h3 className="text-lg font-bold">Claims Analysis</h3>
+                                <p className="text-gray-300 text-sm">
+                                    Detailed analysis of health claims made by {influencer.name}.
+                                </p>
 
-                              
+                                {/* Filtered Claims List */}
+                                <div className="mt-4">
+                                    {influencer.claims
+                                        ?.filter((claim) => {
+                                            // Filter by search query
+                                            const matchesSearch = claim.text
+                                                .toLowerCase()
+                                                .includes(searchClaimsQuery.toLowerCase());
+                                            // Filter by selected category
+                                            const matchesCategory =
+                                                !selectedCategory || claim.category === selectedCategory;
+                                            return matchesSearch && matchesCategory;
+                                        })
+                                        .map((claim, index) => (
+                                            <div key={index} className="p-4 mb-2 bg-[#101727] rounded-lg border border-gray-700">
+                                                <p className="text-white text-sm">{claim.text}</p>
+                                                <p className="text-gray-400 text-xs mt-1">
+                                                    Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No"}
+                                                </p>
+                                            </div>
+                                        ))}
+                                </div>
+
+
                             </div>
 
                         </>
                     )}
                     {activeTab === "products" && (
                         <div>
-                            <h3 className="text-lg font-bold">Recommended Products</h3>
+                            <h3 className="text-xs/3">Recommended Products</h3>
                             <p className="text-gray-300 text-sm">
                                 Products recommended or endorsed by {influencer.name}.
                             </p>
@@ -232,7 +232,7 @@ export default function InfluencerPageComponent() {
                     )}
                     {activeTab === "monetization" && (
                         <div>
-                            <h3 className="text-lg font-bold">Monetization</h3>
+                            <h3 className="text-xs/3">Monetization</h3>
                             <p className="text-gray-300 text-sm">
                                 Insights into {influencer.name}'s revenue streams and monetization strategies.
                             </p>
