@@ -250,6 +250,7 @@ export default function InfluencerPageComponent() {
 
                     //Filtered by selected category
                     const matchesCategory = !selectedCategory || claim.category === selectedCategory;
+                    return matchesSearch && matchesCategory;
                 })}
             </div>
         </div>
