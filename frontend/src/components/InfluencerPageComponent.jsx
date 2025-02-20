@@ -244,23 +244,7 @@ export default function InfluencerPageComponent() {
             {/* Claims List Ordered by Trust Score */}
 <div className="mt-6 bg-[#182130] rounded-lg p-4">
     <h3 className="text-lg font-bold mb-4">Claims Ordered by Trust Score</h3>
-    <div className="space-y-3">
-        {influencer.claims
-            ?.sort((a, b) => (b.confidenceScore || 0) - (a.confidenceScore || 0)) // Sort by trust score (descending)
-            .map((claim, index) => (
-                <div key={index} className="flex justify-between items-center p-4 bg-[#101727] rounded-lg border border-gray-700">
-                    <div>
-                        <p className="text-white text-sm">{claim.text}</p>
-                        <p className="text-gray-400 text-xs mt-1">
-                            Category: {claim.category} | Verified: {claim.verified ? "Yes" : "No"}
-                        </p>
-                    </div>
-                    <div className="text-[#14b983] font-bold text-sm">
-                        {claim.confidenceScore || 0}%
-                    </div>
-                </div>
-            ))}
-    </div>
+    
 </div>
         </div>
     );
