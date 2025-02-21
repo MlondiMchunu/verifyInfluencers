@@ -10,9 +10,11 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
+    outDir:"dist",
     rollupOptions: {
-      external: ['./lucide-react']
+      external: ['./lucide-react'],
     },
+    
   },
   define: {
     "process.env": process.env,
