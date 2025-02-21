@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors())
 
 const apiKey = process.env.OPENAI_API_KEY;
-const apiUrl = "https://api.openai.com/v1/chat/completions";
+const apiUrl = "https://api.x.ai/v1/chat/completions";
 
 app.post("/api/research", async (req, res) => {
   try {
@@ -90,7 +90,7 @@ Analyze recent health-related content from "${influencerName}" within the "${tim
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: "grok-2-latest",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 1000,
       }),
