@@ -35,6 +35,7 @@ Analyze recent health-related content from "${influencerName}" within the "${tim
 {
   "influencer": {
     "name": "${influencerName}",
+    "picture":(link to "${influencerName} picture")
     "category": (Nutrition, Fitness, Medicine, Mental Health etc),
     "followers": (integer),
     "trustScore": (number (0-100)),
@@ -42,7 +43,7 @@ Analyze recent health-related content from "${influencerName}" within the "${tim
   },
   "claims": [
     {
-      "text": "Health claim text here",
+      "text": ("Health claim text here"),
       "category": (Nutrition, Fitness, Medicine, Mental Health, Sleep, Performance ,Hormones, Nutrition,Exercise, Stress, Cognition, Motivation, Recovery, etc),
       "verification_status": (Verified, Questionable, Debunked)
       "source": (PubMed, Nature, Science, etc),
