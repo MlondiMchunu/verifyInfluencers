@@ -15,3 +15,6 @@ COPY . .
 
 #Set port environment variable
 ENV PORT=4000
+
+#Expose the port so our computer can access it
+EXPOSE 9000
