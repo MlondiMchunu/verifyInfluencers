@@ -9,3 +9,9 @@ COPY  package.json ./
 
 #install all dependencies
 RUN npm install
+
+#Copy the rest of our app into the container
+COPY . .
+
+#Set port environment variable
+ENV PORT=4000
