@@ -1,8 +1,8 @@
 #Uses node version 20 as our base image
-FROM node:20
+FROM node:22
 
 #Goes to the app directory
-WORKDIR /home/vuyo/Downloads/mlondi/verifyInfluencers/backend/Dockerfile
+WORKDIR /home/vuyo/Downloads/mlondi/verifyInfluencers/backend
 
 #Copy package.json and package-lock.json
 COPY  package.json ./
@@ -17,4 +17,7 @@ COPY . .
 ENV PORT=4000
 
 #Expose the port so our computer can access it
-EXPOSE 9000
+EXPOSE 4000
+
+#Run the app
+CMD ["npm","start"]
