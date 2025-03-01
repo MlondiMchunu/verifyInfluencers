@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors")
-const fetch = require("node-fetch")
+//const fetch = require("node-fetch")
+import fetch from "node-fetch"
+
 require('dotenv').config()
 
 const app = express();
@@ -16,6 +18,13 @@ app.use(cors())
 
 const apiKey = process.env.OPENAI_API_KEY;
 const apiUrl = "https://api.deepseek.com";
+
+app.get("/api/home",async(req,res)=>{
+  res.statusCode = 200;
+    res.setHeader("Content-Type","text/plain");
+    res.end("Hello World\n");
+
+})
 
 app.post("/api/research", async (req, res) => {
   try {
