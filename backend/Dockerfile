@@ -2,7 +2,7 @@
 FROM node:22
 
 #Goes to the app directory
-WORKDIR /home/vuyo/Downloads/mlondi/verifyInfluencers/backend
+WORKDIR /app
 
 #Copy package.json and package-lock.json
 COPY  package.json ./
