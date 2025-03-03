@@ -7,14 +7,14 @@ require('dotenv').config()
 
 const app = express();
 app.use(express.json());
-/*app.use(cors({
+app.use(cors({
   origin:["http://localhost:5173"],
   methods:["POST","GET"],
   allowedHeaders:"Content-Type",
   credentials:true
-}));*/
+}));
 
-app.use(cors())
+//app.use(cors())
 
 const apiKey = process.env.OPENAI_API_KEY;
 const apiUrl = "https://api.deepseek.com";
