@@ -17,7 +17,7 @@ app.use(cors({
 //app.use(cors())
 
 const apiKey = process.env.OPENAI_API_KEY;
-const apiUrl = "https://api.deepseek.com";
+const apiUrl = "https://api.openai.com/v1/chat/completions";
 
 app.get("/api/home",async(req,res)=>{
   res.statusCode = 200;
