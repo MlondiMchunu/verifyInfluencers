@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
 
-console.log("API KEY:", import.meta.env.VITE_API_KEY);
-console.log("API URL:", import.meta.env.VITE_API_URL);
+//console.log("API KEY:", import.meta.env.VITE_API_KEY);
+//console.log("API URL:", import.meta.env.VITE_API_URL);
 
 const Leaderboard = () => {
 
