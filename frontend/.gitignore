@@ -27,3 +27,4 @@ dist-ssr
 ./node_modules
 ./getdata.rest
 .vercel
+vercek.json
