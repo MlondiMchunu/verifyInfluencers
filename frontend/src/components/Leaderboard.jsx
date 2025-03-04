@@ -1,22 +1,11 @@
 import React from "react";
 import { CircleCheckBig, Users, ChartColumn } from "lucide-react";
 import { useState, useEffect } from 'react';
-//import env from "react-dotenv";
 
-const apiKey = import.meta.env.VITE_API_KEY;
+const hardcodedApiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
 
-//console.log("API KEY:", import.meta.env.VITE_API_KEY);
-//console.log("API URL:", import.meta.env.VITE_API_URL);
-
 const Leaderboard = () => {
-
-  //const [activeButton, setActiveButton] = useState(null);
-  /*const handleClick = (button) => {
-      setActiveButton(button)
-    }*/
-
-  //state for active filter
   const [activeFilter, setActiveFilter] = useState("All");
   const [influencers, setInfluencers] = useState([]);
   const [stats, setStats] = useState({
@@ -24,9 +13,13 @@ const Leaderboard = () => {
     verifiedClaims: 0,
     averageTrustScore: 0,
   });
+  const [userApiKey, setUserApiKey] = useState("");
+  const [useHardcodedKey, setUseHardcodedKey] = useState(true);
 
   useEffect(() => {
     async function fetchData(prompt) {
+      const apiKey = useHardcodedKey ? hardcodedApiKey : userApiKey;
+
       try {
         const response = await fetch(apiUrl, {
           method: "POST",
@@ -41,7 +34,6 @@ const Leaderboard = () => {
           }),
         });
 
-        //Check if response is JSON
         if (!response.ok) {
           throw new Error(`API error:${response.status} ${response.statusText}`);
         }
@@ -71,7 +63,6 @@ const Leaderboard = () => {
           return;
         }
 
-        //Calculate Stats
         const totalInfluencers = influencersData.length;
         const verifiedClaims = influencersData.reduce((acc, influencer) => acc + (influencer.verifiedClaims || 0), 0);
         const averageTrustScore = influencersData.reduce((acc, influencer) => acc + (influencer.trustScore || 0), 0) / totalInfluencers;
@@ -82,7 +73,6 @@ const Leaderboard = () => {
           verifiedClaims,
           averageTrustScore: averageTrustScore.toFixed(1),
         });
-
 
         if (!data.choices || data.choices.length === 0 || !data.choices[0].message) {
           throw new Error("Invalid API response structure.");
@@ -107,14 +97,13 @@ const Leaderboard = () => {
             console.error("Could not find JSON in AI response.");
             return;
           }
-
         }
 
       } catch (error) {
         console.error("Error fetching influencer data:", error);
-        //return null;
       }
     }
+
     fetchData(`Provide ONLY a JSON array of health influencers with these fields:
 - "name" (string)
 - "category" (string, one of: "Nutrition", "Fitness", "Medicine", "Mental Health")
@@ -128,25 +117,45 @@ Do NOT include explanations, markdown, or formatting—return raw JSON only.`).t
         console.log("AI Response:", data.choices[0].message.content);
       }
     });
-  }, []);
+  }, [useHardcodedKey, userApiKey]);
 
-
-  //function to handle category filter
   const filteredInfluencers = activeFilter === "All"
     ? influencers
     : influencers.filter(influencer => influencer.category === activeFilter);
 
   return (
-
     <>
       <div className="relative w-full max-w-full">
-
-        <div className="w-full text-white text-left  max-w-[1200px] mx-auto bg-[#101727] p-6 rounded-lg shadow-md">
-          {/* Header */}
-          <h2 className=" text-xl font-bold">Influencer Trust Leaderboard</h2>
+        <div className="w-full text-white text-left max-w-[1200px] mx-auto bg-[#101727] p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-bold">Influencer Trust Leaderboard</h2>
           <p className="text-xs/5 mt-2 opacity-80">Real-time rankings of health influencers based on scientific accuracy, credibility, and transparency. Updated daily using AI-powered analysis.</p>
 
-          <div className="flex justify-between mt-4 text-white ">
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-gray-300">API Key</label>
+            <div className="mt-1 flex rounded-md shadow-sm">
+              <input
+                type="text"
+                value={userApiKey}
+                onChange={(e) => setUserApiKey(e.target.value)}
+                className="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300 bg-[#182130] text-white p-2"
+                placeholder="Enter your API key"
+              />
+              <button
+                onClick={() => setUseHardcodedKey(false)}
+                className="inline-flex items-center px-4 rounded-full !bg-[#101727] text-xs/5 font-medium text-white hover:!bg-[#1db885]"
+              >
+                Use Custom Key
+              </button>
+              <button
+                onClick={() => setUseHardcodedKey(true)}
+                className="inline-flex items-center px-4 rounded-full !bg-[#101727] text-xs/ font-medium text-white hover:!bg-[#1db885] ml-2"
+              >
+                Use Hardcoded Key
+              </button>
+            </div>
+          </div>
+
+          <div className="flex justify-between mt-4 text-white">
             <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
               <div className="flex col-2 gap-2">
                 <span>
@@ -182,9 +191,7 @@ Do NOT include explanations, markdown, or formatting—return raw JSON only.`).t
             </label>
           </div>
 
-
-          <div className="w-1/2 mt-6 flex gap-2 text-xs/5 ">
-
+          <div className="w-1/2 mt-6 flex gap-2 text-xs/5">
             {["All", "Nutrition", "Fitness", "Medicine", "Mental Health"].map(category => (
               <button
                 key={category}
@@ -195,27 +202,21 @@ Do NOT include explanations, markdown, or formatting—return raw JSON only.`).t
                 {category}
               </button>
             ))}
-
-
           </div>
 
-          {/*Influencer Table */}
           <div className="mt-6 overflow-x-auti">
             <table className="w-full border-collapse border border-gray-600">
-              {/*Table Head*/}
               <thead className="bg-[#182130] text-white text-xs/5 opacity-70">
                 <tr>
-                  <th className=" border-gray-600 px-4 py-2">Rank</th>
-                  <th className=" border-gray-600 px-4 py-2">Influencer</th>
-                  <th className=" border-gray-600 px-4 py-2">Category</th>
+                  <th className="border-gray-600 px-4 py-2">Rank</th>
+                  <th className="border-gray-600 px-4 py-2">Influencer</th>
+                  <th className="border-gray-600 px-4 py-2">Category</th>
                   <th className="border-gray-600 px-4 py-2">Trust Score</th>
-                  <th className=" border-gray-600 px-4 py-2">Trend</th>
-                  <th className=" border-gray-600 px-4 py-2">Followers</th>
-                  <th className=" border-gray-600 px-4 py-2">Verified Claims</th>
+                  <th className="border-gray-600 px-4 py-2">Trend</th>
+                  <th className="border-gray-600 px-4 py-2">Followers</th>
+                  <th className="border-gray-600 px-4 py-2">Verified Claims</th>
                 </tr>
               </thead>
-
-              {/*Table Body*/}
               <tbody className="text-gray-200">
                 {filteredInfluencers.map((influencer, index) => (
                   <tr key={influencer.id || `infuencer-${index}`} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5 bg-[#182130]">
@@ -226,13 +227,11 @@ Do NOT include explanations, markdown, or formatting—return raw JSON only.`).t
                     <td className="border-b border-gray-600 px-4 py-2">{influencer.trend}</td>
                     <td className="border-b border-gray-600 px-4 py-2">{influencer.followers}</td>
                     <td className="border-b border-gray-600 px-4 py-2">{influencer.verifiedClaims}</td>
-
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-
         </div>
       </div>
     </>
