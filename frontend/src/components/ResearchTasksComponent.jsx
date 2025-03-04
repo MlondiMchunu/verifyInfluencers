@@ -154,13 +154,13 @@ export default function ResearchTasksComponent() {
                         />
                         <button
                             onClick={() => setUseHardcodedKey(false)}
-                            className="inline-flex items-center px-4 rounded-r-md bg-[#1db885] text-sm font-medium text-white hover:bg-[#1aa576]"
+                            className="inline-flex items-center px-4 rounded-r-md !bg-[#101727]  text-sm font-medium text-white !hover:bg-[#1aa576]"
                         >
                             Use Custom Key
                         </button>
                         <button
                             onClick={() => setUseHardcodedKey(true)}
-                            className="inline-flex items-center px-4 rounded-r-md bg-[#1db885] text-sm font-medium text-white hover:bg-[#1aa576] ml-2"
+                            className="inline-flex items-center px-4 rounded-r-md !bg-[#101727] text-sm font-medium text-white hover:bg-[#1aa576] ml-2"
                         >
                             Use Hardcoded Key
                         </button>
