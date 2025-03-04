@@ -17,14 +17,14 @@ const Menubar = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex space-x-4 md:space-x-6 text-xs/5 opacity-70 ">
-          <Link to="/leaderboard" className="text-white !text-white hover:text-green-400 transition-colors ">Leaderboard</Link>
-          <Link to="/researchTasks" className="text-white !text-white hover:text-green-400 transition-colors">Research Tasks</Link>
-          <Link to="/products" className="text-white !text-white hover:text-green-400 transition-colors">Products</Link>
-          <Link to="/monetization" className="text-white !text-white hover:text-green-400 transition-colors">Monetization</Link>
-          <Link to="/about" className="text-white !text-white hover:text-green-400 transition-colors">About</Link>
-          <Link to="/contact" className="text-white !text-white hover:text-green-400 transition-colors">Contact</Link>
-          <Link to="/admin" className="text-white !text-white hover:text-green-400 transition-colors">Admin</Link>
+        <div className="flex space-x-4 md:space-x-6 text-xs/5 opacity-70  ">
+          <Link to="/leaderboard" className="text-white !text-white hover:!text-[#1db885] transition-colors ">Leaderboard</Link>
+          <Link to="/researchTasks" className="text-white !text-white hover:!text-[#1db885] transition-colors">Research Tasks</Link>
+          <Link to="/products" className="text-white !text-white hover:!text-[#1db885] transition-colors">Products</Link>
+          <Link to="/monetization" className="text-white !text-white hover:!text-[#1db885] transition-colors">Monetization</Link>
+          <Link to="/about" className="text-white !text-white hover:!text-[#1db885] transition-colors">About</Link>
+          <Link to="/contact" className="text-white !text-white hover:!text-[#1db885] transition-colors">Contact</Link>
+          <Link to="/admin" className="text-white !text-white hover:!text-[#1db885] transition-colors">Admin</Link>
         </div>
       </nav>
 

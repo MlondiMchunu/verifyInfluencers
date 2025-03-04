@@ -149,18 +149,18 @@ export default function ResearchTasksComponent() {
                             type="text"
                             value={userApiKey}
                             onChange={(e) => setUserApiKey(e.target.value)}
-                            className="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300 bg-[#182130] text-white p-2"
+                            className="flex-1 block w-full rounded-sm text-xs/5 border-gray-300 bg-[#101724] text-white p-2"
                             placeholder="Enter your API key"
                         />
                         <button
                             onClick={() => setUseHardcodedKey(false)}
-                            className="inline-flex items-center px-4 rounded-r-md !bg-[#101727]  text-sm font-medium text-white !hover:bg-[#1aa576]"
+                            className="inline-flex items-center ml-2 px-4 rounded-full !bg-[#101727]  !text-xs/5 text-white hover:!bg-[#1db885]"
                         >
                             Use Custom Key
                         </button>
                         <button
                             onClick={() => setUseHardcodedKey(true)}
-                            className="inline-flex items-center px-4 rounded-r-md !bg-[#101727] text-sm font-medium text-white hover:bg-[#1aa576] ml-2"
+                            className="inline-flex items-center ml-2 px-4 rounded-sm !bg-[#101727]  !text-xs/5 text-white hover:!bg-[#1db885]"
                         >
                             Use Hardcoded Key
                         </button>
