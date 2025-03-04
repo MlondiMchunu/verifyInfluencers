@@ -131,13 +131,13 @@ Do NOT include explanations, markdown, or formatting—return raw JSON only.`).t
           <p className="text-xs/5 mt-2 opacity-80">Real-time rankings of health influencers based on scientific accuracy, credibility, and transparency. Updated daily using AI-powered analysis.</p>
 
           <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-300">API Key</label>
+            <label className="block text-xs/5 font-medium text-gray-300">API Key</label>
             <div className="mt-1 flex rounded-md shadow-sm">
               <input
                 type="text"
                 value={userApiKey}
                 onChange={(e) => setUserApiKey(e.target.value)}
-                className="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300 bg-[#182130] text-white p-2"
+                className="flex-1 block w-full rounded-none rounded-sm text-xs/5 border-gray-300 bg-[#182130] text-white p-2"
                 placeholder="Enter your API key"
               />
               <button
