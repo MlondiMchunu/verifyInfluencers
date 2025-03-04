@@ -3,7 +3,7 @@ import { Settings, Plus } from "lucide-react";
 import BackToDashboard from "./BackToDashboard";
 import { useNavigate } from "react-router-dom";
 
-const apiKey = import.meta.env.VITE_API_KEY;
+const hardcodedApiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
 const backendUrl = "http://localhost:4000"; // Replace with your backend URL
 
@@ -18,6 +18,8 @@ export default function ResearchTasksComponent() {
     const [claimsToAnalyze, setClaimsToAnalyze] = useState(0);
     const [productsToFind, setProductsToFind] = useState(0);
     const [influencers, setInfluencers] = useState([]);
+    const [userApiKey, setUserApiKey] = useState("");
+    const [useHardcodedKey, setUseHardcodedKey] = useState(true);
 
     const navigate = useNavigate();
 
@@ -42,6 +44,8 @@ export default function ResearchTasksComponent() {
     };
 
     const handleStartResearch = async () => {
+        const apiKey = useHardcodedKey ? hardcodedApiKey : userApiKey;
+
         const researchData = {
             influencerName,
             timeRange: selectedTimeRange,
@@ -58,6 +62,7 @@ export default function ResearchTasksComponent() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${apiKey}`,
                 },
                 body: JSON.stringify(researchData),
             });
@@ -123,7 +128,6 @@ export default function ResearchTasksComponent() {
         }
     };
 
-
     return (
         <div className="relative w-full max-w-full">
             <div className="absolute flex">
@@ -135,6 +139,32 @@ export default function ResearchTasksComponent() {
                 <div className="absolute top-0 left-0 flex items-center gap-2 p-4">
                     <Settings className="w-3 h-3 text-[#1db687]" />
                     <p className="text-white text-sm font-bold">Research Configuration</p>
+                </div>
+
+                {/* API Key Input Section */}
+                <div className="mt-4 w-full max-w-[1040px]">
+                    <label className="block text-sm font-medium text-gray-300">API Key</label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                            type="text"
+                            value={userApiKey}
+                            onChange={(e) => setUserApiKey(e.target.value)}
+                            className="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300 bg-[#182130] text-white p-2"
+                            placeholder="Enter your API key"
+                        />
+                        <button
+                            onClick={() => setUseHardcodedKey(false)}
+                            className="inline-flex items-center px-4 rounded-r-md bg-[#1db885] text-sm font-medium text-white hover:bg-[#1aa576]"
+                        >
+                            Use Custom Key
+                        </button>
+                        <button
+                            onClick={() => setUseHardcodedKey(true)}
+                            className="inline-flex items-center px-4 rounded-r-md bg-[#1db885] text-sm font-medium text-white hover:bg-[#1aa576] ml-2"
+                        >
+                            Use Hardcoded Key
+                        </button>
+                    </div>
                 </div>
 
                 <div className="mt-16 flex flex-wrap gap-4 justify-center w-full">
