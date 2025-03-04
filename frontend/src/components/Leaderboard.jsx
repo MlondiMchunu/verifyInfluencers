@@ -142,13 +142,13 @@ Do NOT include explanations, markdown, or formatting—return raw JSON only.`).t
               />
               <button
                 onClick={() => setUseHardcodedKey(false)}
-                className="inline-flex items-center px-4 rounded-full !bg-[#101727] text-xs/5  text-white hover:!bg-[#1db885]"
+                className="inline-flex items-center px-4 rounded-full !bg-[#101727] !text-xs/5  text-white hover:!bg-[#1db885]"
               >
                 Use Custom Key
               </button>
               <button
                 onClick={() => setUseHardcodedKey(true)}
-                className="inline-flex items-center px-4 rounded-full !bg-[#101727] text-xs/ text-white hover:!bg-[#1db885] ml-2"
+                className="inline-flex items-center px-4 rounded-full !bg-[#101727] !text-xs/5 text-white hover:!bg-[#1db885] ml-2"
               >
                 Use Hardcoded Key
               </button>
