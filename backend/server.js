@@ -7,11 +7,12 @@ require('dotenv').config()
 
 const app = express();
 app.use(express.json());
+
+
 app.use(cors({
-  origin:["http://localhost:5173"],
-  methods:["POST","GET"],
-  allowedHeaders:"Content-Type",
-  credentials:true
+  origin: 'http://localhost:5173', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
 }));
 
 //app.use(cors())
