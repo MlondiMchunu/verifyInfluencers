@@ -143,7 +143,7 @@ export default function ResearchTasksComponent() {
 
                 {/* API Key Input Section */}
                 <div className="mt-4 w-full max-w-[1040px]">
-                    <label className="block text-sm font-medium text-gray-300">API Key</label>
+                    <label className="block text-xs/5 text-white text-left mt-5">API Key:</label>
                     <div className="mt-1 flex rounded-md shadow-sm">
                         <input
                             type="text"
@@ -209,7 +209,8 @@ export default function ResearchTasksComponent() {
                                 type="text"
                                 value={influencerName}
                                 onChange={(e) => setInfluencerName(e.target.value)}
-                                className="bg-[#182130] border border-gray-400 text-white px-2 py-2 rounded-sm w-full"
+                                className="bg-[#182130] border border-gray-400 text-white px-2 py-2 rounded-sm w-full text-xs/5"
+                                placeholder="Enter influencer name"
                             />
                         </div>
 
@@ -263,7 +264,7 @@ export default function ResearchTasksComponent() {
                         <div>
                             <span className="flex flex-row mt-[15px]">
                                 <label className="ml-[10px] w-full bg-[#182130] border-0 border-gray-400 text-white px-6 py-4 rounded-sm flex flex-col items-left justify-center cursor-pointer text-left transition-all duration-300">
-                                    <span className="text-sm font-bold block text-left">Include Revenue Analysis</span>
+                                    <span className="text-sm font-bold text-left">Include Revenue Analysis</span>
                                     <span className="text-xs/5 opacity-80 block mt-1">
                                         Analyze monetization methods and estimate earnings
                                     </span>
@@ -271,7 +272,7 @@ export default function ResearchTasksComponent() {
                                 <div className="py-8">
                                     <button
                                         onClick={() => setIsToggledRA(!isToggledRA)}
-                                        className={`w-10 h-5 rounded-full p-1 transition-colors duration-300 flex items-center justify-center ${isToggledRA ? "!bg-[#14bc81]" : "bg-gray-600"
+                                        className={`w-8 h-5 rounded-full p-1 transition-colors duration-300 flex items-center justify-center ${isToggledRA ? "!bg-[#14bc81]" : "bg-gray-600"
                                             }`}
                                     >
                                         <div
