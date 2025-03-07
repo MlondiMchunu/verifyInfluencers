@@ -1,2 +1,6 @@
 
-Our platform verifies health claims from popular influencers using credible scientific research. The end goal is simple: make it easier for people to find honest, evidence-based guidance.
+
+
+**project link:** https://verify-influencers-1.vercel.app/
+
+Shoot me a mail at mlondiemchunu1@gmai.com for project description.
