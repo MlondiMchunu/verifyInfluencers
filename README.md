@@ -13,5 +13,6 @@
 ![image](https://github.com/user-attachments/assets/2301f4e5-8997-4b5c-a877-fd2a21522e64)
 
 3. Influencer Page
-![Screenshot from 2025-03-03 15-31-11](https://github.com/user-attachments/assets/cca971b5-d6fb-49ea-85c8-294830184661)
+![image](https://github.com/user-attachments/assets/733c95c4-ac09-44bc-ada5-30eea40ed3dc)
+
 
