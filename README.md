@@ -9,10 +9,18 @@
 ![image](https://github.com/user-attachments/assets/37e89b70-08a2-45dc-8588-b4a12e07a7e8)
 
 
-2. Configure esearch
-![image](https://github.com/user-attachments/assets/2301f4e5-8997-4b5c-a877-fd2a21522e64)
 
-3. Influencer Page
-![image](https://github.com/user-attachments/assets/733c95c4-ac09-44bc-ada5-30eea40ed3dc)
 
+3. Configure esearch
+![image](https://github.com/user-attachments/assets/0017a147-744e-4274-9f4c-27e33a6e1cfb)
+
+
+
+
+
+
+4. Influencer Page
+
+
+![Screenshot from 2025-03-03 15-31-11](https://github.com/user-attachments/assets/701af8af-95a2-48e3-8e4b-2590ce8f77f2)
 
